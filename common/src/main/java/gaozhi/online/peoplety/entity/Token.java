@@ -17,7 +17,7 @@ import lombok.Data;
  * ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
  */
 @Data
-public class Token {
+public class Token{
     //设备类型
     public enum Device {
         MOBILE(0),
