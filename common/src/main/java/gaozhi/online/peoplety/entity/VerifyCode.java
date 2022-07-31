@@ -1,7 +1,7 @@
 package gaozhi.online.peoplety.entity;
 
 
-import gaozhi.online.peoplety.user.util.StringUtil;
+import gaozhi.online.peoplety.util.StringUtil;
 import lombok.Data;
 
 /**
