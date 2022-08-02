@@ -1,15 +1,20 @@
 package gaozhi.online.peoplety.util;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.util.List;
+
 /**
- * @description(字符串工具)
- * @author: gaozhi.online
- * @createDate: 2021/2/5 0005
- * @version: 1.0
+ * @author gaozhi.online
+ * @version 1.0
+ * @description 字符串工具
+ * @date 2021/2/5 0005
  */
 public class StringUtil {
     /**
      * @return boolean
-     * @description(Returns true if, and only if, length() is 0 or if is null.)
+     * @description (Returns true if, and only if, length () is 0 or if is null.)
      * @author gaozhi.online
      * @date 2021/2/5 0005
      */
@@ -38,7 +43,6 @@ public class StringUtil {
      * 生成随机数
      *
      * @param len 随机数的长度
-     * @return
      */
     public static String random(int len) {
         int min = (int) Math.pow(10, len - 1);
@@ -50,5 +54,28 @@ public class StringUtil {
             random /= 10;
         }
         return String.valueOf(random);
+    }
+
+    /**
+     * @description: list转json
+     * @param: list
+     * @return: java.lang.String
+     * @author LiFucheng
+     * @date: 2022/8/2 17:01
+     */
+    public static <T> String list2Json(List<T> list) {
+        return new Gson().toJson(list);
+    }
+
+    /**
+     * @description: json转list
+     * @param: json
+     * @return: java.util.List<T>
+     * @author LiFucheng
+     * @date: 2022/8/2 17:01
+     */
+    public static <T> List<T> json2List(String json) {
+        return new Gson().fromJson(json, new TypeToken<List<T>>() {
+        }.getType());
     }
 }
