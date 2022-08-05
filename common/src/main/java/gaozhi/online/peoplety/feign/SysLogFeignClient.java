@@ -1,4 +1,4 @@
-package gaozhi.online.peoplety.log;
+package gaozhi.online.peoplety.feign;
 
 import gaozhi.online.base.log.SysLog;
 import gaozhi.online.base.result.Result;
