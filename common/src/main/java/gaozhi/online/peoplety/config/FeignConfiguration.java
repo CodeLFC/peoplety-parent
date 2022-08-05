@@ -21,7 +21,7 @@ import java.util.Enumeration;
  */
 @Slf4j
 @Configuration
-@EnableFeignClients(basePackages = {"gaozhi.online.peoplety.log"})
+@EnableFeignClients(basePackages = {"gaozhi.online.peoplety.feign"})
 public class FeignConfiguration {
 
     /**
