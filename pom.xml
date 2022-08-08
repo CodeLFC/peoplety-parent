@@ -24,7 +24,17 @@
         <org.mybatis.spring.boot.version>2.2.2</org.mybatis.spring.boot.version>
         <com.github.pagehelper.version>1.4.2</com.github.pagehelper.version>
     </properties>
-
+    <repositories>
+        <!--添加仓库-->
+        <repository>
+            <id>spring-base</id>
+            <url>https://github.com/CodeLFC/maven-repository/spring-base</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
     <dependencies>
         <!--基础依赖-->
         <dependency>
