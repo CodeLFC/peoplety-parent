@@ -19,6 +19,7 @@ public class Message {
 
     private long id;
     private int type;
+    private int typeMsg;
     //消息来源
     private long fromId;
     //消息去向
@@ -45,12 +46,20 @@ public class Message {
 
     //消息类型
     public enum Type {
+        //未知消息
         UNKNOWN(-1),
+        //系统消息
         SYSTEM(0),
+        //新评论
         NEW_COMMENT(1),
+        //新粉丝
         NEW_FANS(2),
+        //新派生
         NEW_EXTEND(3),
-        NEW_FAVORITE(4);
+        //新收藏
+        NEW_FAVORITE(4),
+        //新朋友消息
+        NEW_FRIEND_MESSAGE(5);
         private final int type;
 
         Type(int type) {
