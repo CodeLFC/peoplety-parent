@@ -20,13 +20,15 @@ public class MessageIDService implements Function<Long, Long> {
      */
     public static final String MESSAGE_ID_REDIS_KEY = "MESSAGE_ID_REDIS_KEY";
 
-    {
+    private RedisService redisService;
+
+    @Autowired
+    public MessageIDService(RedisService redisService) {
+        this.redisService = redisService;
         /**设置分布式ID的提供者*/
         Message.setIDSupplier(this);
     }
 
-    @Autowired
-    private RedisService redisService;
 
     @Override
     public Long apply(Long increaseSize) {
