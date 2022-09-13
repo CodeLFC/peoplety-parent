@@ -88,6 +88,11 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>${com.github.pagehelper.version}</version>
         </dependency>
+        <!-- redis依赖包 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
