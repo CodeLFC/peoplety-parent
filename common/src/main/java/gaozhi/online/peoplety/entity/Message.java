@@ -4,6 +4,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * @author LiFucheng
@@ -16,6 +19,32 @@ import java.util.concurrent.atomic.AtomicLong;
 public class Message {
     public static final long SERVER = -1;
     private static final AtomicLong ID = new AtomicLong(0);
+    public static final long ID_INCREASE_SIZE = 1000 * 10000;
+    private static long BASE_ID = 0;
+    /**
+     * <新的BASE_ID,获取的ID增长量>
+     */
+    private static Function<Long, Long> IDSupplier;
+
+    public static long generateId() {
+        if (getReleaseIDNum() <= 0) {
+            ID.set(0);
+            if (IDSupplier != null) {
+                BASE_ID = IDSupplier.apply(ID_INCREASE_SIZE);
+            } else {
+                BASE_ID += ID_INCREASE_SIZE;
+            }
+        }
+        return ID.getAndAdd(1) + BASE_ID;
+    }
+
+    public static void setIDSupplier(Function<Long, Long> IDSupplier) {
+        Message.IDSupplier = IDSupplier;
+    }
+
+    public static long getReleaseIDNum() {
+        return ID_INCREASE_SIZE - ID.get();
+    }
 
     private long id;
     private int type;
@@ -38,10 +67,6 @@ public class Message {
         this.msg = msg;
         this.remark = remark;
         this.time = time;
-    }
-
-    public static long generateId() {
-        return ID.getAndAdd(1);
     }
 
     //消息类型
