@@ -2,8 +2,8 @@ package gaozhi.online.peoplety.feign;
 
 import gaozhi.online.base.interceptor.HeaderChecker;
 import gaozhi.online.base.result.Result;
-import gaozhi.online.peoplety.config.FeignConfiguration;
 import gaozhi.online.peoplety.entity.Message;
+import gaozhi.online.peoplety.config.FeignConfiguration;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

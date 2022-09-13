@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -36,24 +37,25 @@ public class FeignConfiguration {
 
     @Bean
     public RequestInterceptor headerInterceptor() {
-        return new RequestInterceptor() {
-            @Override
-            public void apply(RequestTemplate requestTemplate) {
-                ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder
-                        .getRequestAttributes();
-                HttpServletRequest request = attributes.getRequest();
-                Enumeration<String> headerNames = request.getHeaderNames();
-                if (headerNames != null) {
-                    while (headerNames.hasMoreElements()) {
-                        String name = headerNames.nextElement();
-                        String values = request.getHeader(name);
-                        // 跳过 content-length body是跟Content-Length，可能导致Content-length长度跟body不一致
-                        if (name.equals("content-length")) {
-                            continue;
-                        }
-                        requestTemplate.header(name, values);
-                    }
+        return requestTemplate -> {
+            ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder
+                    .getRequestAttributes();
+            if (attributes == null) {
+                return;
+            }
+            HttpServletRequest request = attributes.getRequest();
+            Enumeration<String> headerNames = request.getHeaderNames();
+            if (headerNames == null) {
+                return;
+            }
+            while (headerNames.hasMoreElements()) {
+                String name = headerNames.nextElement();
+                String values = request.getHeader(name);
+                // 跳过 content-length body是跟Content-Length，可能导致Content-length长度跟body不一致
+                if (name.equals("content-length")) {
+                    continue;
                 }
+                requestTemplate.header(name, values);
             }
         };
     }
