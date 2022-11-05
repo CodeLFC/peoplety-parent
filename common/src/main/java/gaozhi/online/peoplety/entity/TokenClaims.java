@@ -63,19 +63,6 @@ public class TokenClaims {
      * 设备类型
      */
     private int device;
-    /**
-     * 身份
-     */
-    private int status;
-    /**
-     * ip归属地
-     */
-    private String ip;
-    /**
-     * 上次活动时间
-     */
-    private long lastOnline;
-
 
     private static final Gson gson = new GsonBuilder().enableComplexMapKeySerialization().create();
     private static final Type type = new TypeToken<Map<String, String>>() {
