@@ -17,19 +17,37 @@ import java.util.function.Supplier;
 @Data
 @NoArgsConstructor
 public class Message {
-
+    /**
+     * 消息来源
+     */
     private long id;
+    /**
+     * 消息类别
+     */
     private int type;
+    /**
+     * 消息格式类型
+     */
     private int typeMsg;
-    //消息来源
+    /**
+     * 消息来源
+     */
     private long fromId;
-    //消息去向
+    /**
+     * 消息去向
+     */
     private long toId;
-    //消息内容
+    /**
+     * 消息内容
+     */
     private String msg;
-    //摘要
+    /**
+     * 摘要
+     */
     private String remark;
-    //消息时间
+    /**
+     * 消息时间
+     */
     private long time;
 
     public Message(int type, long fromId, long toId, String msg, String remark, long time) {
@@ -55,8 +73,8 @@ public class Message {
         NEW_EXTEND(3),
         //新收藏
         NEW_FAVORITE(4),
-        //新朋友消息
-        NEW_FRIEND_MESSAGE(5);
+        //指令消息
+        NEW_COMMAND_MESSAGE(5);
         private final int type;
 
         Type(int type) {

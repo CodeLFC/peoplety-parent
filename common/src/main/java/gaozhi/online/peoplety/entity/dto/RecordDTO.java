@@ -14,14 +14,14 @@ import lombok.Data;
 public class RecordDTO {
     private Record record;
     private Record parent;
-    //收藏数量
+    /**收藏数量*/
     private long favoriteNum;
-    //子数量
+    /**子卷宗数量*/
     private long childNum;
-    //评论数量
+    /**评论数量*/
     private long commentNum;
-    //所收藏的收藏夹
+    /**所收藏的收藏夹*/
     private Favorite favorite;
-    //收藏的条目
+    /**收藏的条目*/
     private Favorite.Item item;
 }

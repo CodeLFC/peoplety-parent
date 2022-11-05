@@ -11,34 +11,39 @@ import lombok.Data;
  * <p>
  * DDL 信息 ------------
  * <p>
- *    CREATE TABLE `user_info` (
- *   `id` bigint NOT NULL AUTO_INCREMENT COMMENT '用户账号',
- *   `head_url` varchar(2083) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '头像地址',
- *   `nick` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '群众天眼新用户' COMMENT '昵称',
- *   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '富强、民主、文明、和谐；自由、平等、公正、法治；爱国、敬业、诚信、友善。' COMMENT '备注',
- *   `gender` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'male' COMMENT '性别（male/female/other）',
- *   `birth` bigint DEFAULT '0' COMMENT '出生日期',
- *   `phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '电话',
- *   `wechat` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '微信号',
- *   `qq` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'qq号',
- *   `email` varchar(320) DEFAULT NULL COMMENT '邮箱',
- *   `visible` varchar(1000) DEFAULT NULL COMMENT '各个属性是否可见的json串',
- *   `ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'ip归属地',
- *   `status` int DEFAULT '0' COMMENT '用户身份',
- *   `vip` int DEFAULT '0' COMMENT 'vip',
- *   `ban_time` bigint DEFAULT '0' COMMENT '用户封禁到期时间',
- *   `update_time` bigint DEFAULT '0' COMMENT '信息更新时间',
- *   `create_time` bigint DEFAULT '0' COMMENT '信息创建时间',
- *   PRIMARY KEY (`id`)
+ * CREATE TABLE `user_info` (
+ * `id` bigint NOT NULL AUTO_INCREMENT COMMENT '用户账号',
+ * `head_url` varchar(2083) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '头像地址',
+ * `nick` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '群众天眼新用户' COMMENT '昵称',
+ * `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '富强、民主、文明、和谐；自由、平等、公正、法治；爱国、敬业、诚信、友善。' COMMENT '备注',
+ * `gender` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'male' COMMENT '性别（male/female/other）',
+ * `birth` bigint DEFAULT '0' COMMENT '出生日期',
+ * `phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '电话',
+ * `wechat` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '微信号',
+ * `qq` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'qq号',
+ * `email` varchar(320) DEFAULT NULL COMMENT '邮箱',
+ * `visible` varchar(1000) DEFAULT NULL COMMENT '各个属性是否可见的json串',
+ * `ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'ip归属地',
+ * `status` int DEFAULT '0' COMMENT '用户身份',
+ * `vip` int DEFAULT '0' COMMENT 'vip',
+ * `ban_time` bigint DEFAULT '0' COMMENT '用户封禁到期时间',
+ * `update_time` bigint DEFAULT '0' COMMENT '信息更新时间',
+ * `create_time` bigint DEFAULT '0' COMMENT '信息创建时间',
+ * PRIMARY KEY (`id`)
  * ) ENGINE=MyISAM AUTO_INCREMENT=2147483652 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
  */
 @Data
 public class UserInfo {
-    //------------------------------------------------------------------性别
+    /**
+     * 性别
+     */
     public enum Gender {
+        //女
         FEMALE("female", "女"),
+        //男
         MALE("male", "男"),
-        OTHER("other","其他");
+        //其他
+        OTHER("other", "其他");
 
         private final String key;
         private final String description;
@@ -71,8 +76,13 @@ public class UserInfo {
         }
     }
 
+    /**
+     * 身份
+     */
     public enum Status {
+        //用户
         NORMAL(1, "用户"),
+        //管理员
         MANAGER(2, "管理员");
         private final int status;
         private final String description;
