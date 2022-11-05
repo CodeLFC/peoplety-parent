@@ -67,10 +67,6 @@ public class TokenClaims {
      * 上次活动时间
      */
     private long lastOnline;
-    /**
-     * 过期时间
-     */
-    private long expireTime;
 
 
     private static final Gson gson = new GsonBuilder().enableComplexMapKeySerialization().create();
