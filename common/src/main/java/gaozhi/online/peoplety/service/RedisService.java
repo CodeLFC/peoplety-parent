@@ -1,8 +1,9 @@
-package gaozhi.online.peoplety.service.redis;
+package gaozhi.online.peoplety.service;
 
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.List;
 /**
  * @author LiFucheng
  * @version 1.0
- * @description: TODO
+ * @description: TODO Redis服务
  * @date 2022/7/13 21:26
  */
 
@@ -30,24 +31,44 @@ public class RedisService {
      * @param key
      * @return
      */
+    public String get(final String key) {
+        return redisTemplate.opsForValue().get(key);
+    }
+
+    public String getFromMap(final String mapName, final String key) {
+        BoundHashOperations<String, String, String> opsForHash = redisTemplate.boundHashOps(mapName);
+        return opsForHash.get(key);
+    }
+
+    public void add2Map(final String mapName, final String key, final String value) {
+        BoundHashOperations<String, String, String> opsForHash = redisTemplate.boundHashOps(mapName);
+        opsForHash.put(key, value);
+    }
+
+    /**
+     * 写入缓存
+     */
+    public void set(final String key, String value) {
+        redisTemplate.opsForValue().set(key, value);
+    }
+
+    /**
+     * 读取缓存
+     *
+     * @param key
+     * @return
+     */
     public <T> T get(final String key, Class<T> tClass) {
         String res = redisTemplate.opsForValue().get(key);
-         log.debug("redis key:{} value:{}",key, res);
+        log.debug("redis key:{} value:{}", key, res);
         return gson.fromJson(res, tClass);
     }
 
     /**
      * 写入缓存
      */
-    public <T> boolean set(final String key, T value) {
-        boolean result = false;
-        try {
-            redisTemplate.opsForValue().set(key, gson.toJson(value));
-            result = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
+    public <T> void set(final String key, T value) {
+        redisTemplate.opsForValue().set(key, gson.toJson(value));
     }
 
     /**
@@ -58,30 +79,16 @@ public class RedisService {
      * @author LiFucheng
      * @date: 2022/7/16 12:27
      */
-    public <T> boolean listLeftPush(final String key, T value) {
-        boolean result = false;
-        try {
-            redisTemplate.opsForList().leftPush(key, gson.toJson(value));
-            result = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
+    public <T> void listLeftPush(final String key, T value) {
+        redisTemplate.opsForList().leftPush(key, gson.toJson(value));
     }
 
-    public <T> boolean listLeftPush(final String key, List<T> list) {
-        boolean result = false;
+    public <T> void listLeftPush(final String key, List<T> list) {
         List<String> values = new ArrayList<>(list.size());
         for (T v : list) {
             values.add(gson.toJson(v));
         }
-        try {
-            redisTemplate.opsForList().leftPushAll(key, values);
-            result = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
+        redisTemplate.opsForList().leftPushAll(key, values);
     }
 
     /**
@@ -109,14 +116,7 @@ public class RedisService {
     /**
      * 删除缓存
      */
-    public boolean delete(final String key) {
-        boolean result = false;
-        try {
-            redisTemplate.delete(key);
-            result = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
+    public void delete(final String key) {
+        redisTemplate.delete(key);
     }
 }
