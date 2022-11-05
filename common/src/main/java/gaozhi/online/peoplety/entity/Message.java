@@ -17,39 +17,6 @@ import java.util.function.Supplier;
 @Data
 @NoArgsConstructor
 public class Message {
-    public static final long SERVER = -1;
-    public static final long ID_INCREASE_SIZE = 1000 * 10000;
-    private static final AtomicLong ID = new AtomicLong(0);
-    private static long BASE_ID = 0;
-    /**
-     * <新的BASE_ID,获取的ID增长量>
-     */
-    private static Function<Long, Long> IDSupplier;
-
-    public static long generateId() {
-        if (getReleaseIDNum() < 1) {
-            ID.set(0);
-            if (IDSupplier != null) {
-                updateBaseId();
-            } else {
-                BASE_ID += ID_INCREASE_SIZE;
-            }
-        }
-        return ID.getAndAdd(1) + BASE_ID;
-    }
-
-    private static void updateBaseId() {
-        BASE_ID = IDSupplier.apply(ID_INCREASE_SIZE);
-    }
-
-    public static void setIDSupplier(Function<Long, Long> IDSupplier) {
-        Message.IDSupplier = IDSupplier;
-        updateBaseId();
-    }
-
-    public static long getReleaseIDNum() {
-        return ID_INCREASE_SIZE - ID.get();
-    }
 
     private long id;
     private int type;
