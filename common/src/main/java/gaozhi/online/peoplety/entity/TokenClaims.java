@@ -64,6 +64,14 @@ public class TokenClaims {
      */
     private int device;
     /**
+     * 身份
+     */
+    private int status;
+    /**
+     * ip归属地
+     */
+    private String ip;
+    /**
      * 上次活动时间
      */
     private long lastOnline;
