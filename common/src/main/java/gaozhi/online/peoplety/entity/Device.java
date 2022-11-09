@@ -1,5 +1,9 @@
 package gaozhi.online.peoplety.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
@@ -9,10 +13,12 @@ import lombok.Data;
  * @date 2022/11/5 20:22
  */
 @Data
+@TableName("device")
 public class Device {
     /**
      * 硬件id
      */
+    @TableId(type = IdType.AUTO)
     private long id;
     /**
      * 硬件类型
@@ -35,36 +41,16 @@ public class Device {
      */
     private String ip;
     /**
+     * 硬件端口
+     */
+    private int port;
+    /**
      * 硬件最后一次上线时间
      */
+    @TableField("last_online_time")
     private long lastOnlineTime;
     /**
      * 硬件注册时间
      */
     private long time;
-
-    /**
-     * @author http://gaozhi.online
-     * @version 1.0
-     * @description: TODO 设备类型
-     * @date 2022/11/5 20:30
-     */
-    public static class Type {
-        /**
-         * 硬件类型id
-         */
-        private int id;
-        /**
-         * 硬件品牌
-         */
-        private String brand;
-        /**
-         * 硬件版本类型
-         */
-        private String version;
-        /**
-         * 硬件收录时间
-         */
-        private String time;
-    }
 }

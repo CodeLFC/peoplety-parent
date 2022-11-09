@@ -23,6 +23,7 @@
         <com.alibaba.druid.version>1.2.11</com.alibaba.druid.version>
         <org.mybatis.spring.boot.version>2.2.2</org.mybatis.spring.boot.version>
         <com.github.pagehelper.version>1.4.2</com.github.pagehelper.version>
+        <com.baomidou.mybatis-plus-boot-starter.version>3.5.2</com.baomidou.mybatis-plus-boot-starter.version>
     </properties>
     <repositories>
         <!--添加仓库-->
@@ -81,6 +82,17 @@
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>${org.mybatis.spring.boot.version}</version>
+        </dependency>
+        <!--mybatis plus依赖-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${com.baomidou.mybatis-plus-boot-starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>${com.baomidou.mybatis-plus-boot-starter.version}</version>
         </dependency>
         <!-- myBatis分页依赖 -->
         <dependency>
