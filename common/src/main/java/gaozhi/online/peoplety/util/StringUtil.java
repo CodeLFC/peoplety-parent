@@ -12,6 +12,7 @@ import java.util.List;
  * @date 2021/2/5 0005
  */
 public class StringUtil {
+    private static final Gson gson = new Gson();
     /**
      * @return boolean
      * @description (Returns true if, and only if, length () is 0 or if is null.)
@@ -64,7 +65,7 @@ public class StringUtil {
      * @date: 2022/8/2 17:01
      */
     public static <T> String list2Json(List<T> list) {
-        return new Gson().toJson(list);
+        return gson.toJson(list);
     }
 
     /**
@@ -75,7 +76,7 @@ public class StringUtil {
      * @date: 2022/8/2 17:01
      */
     public static <T> List<T> json2List(String json) {
-        return new Gson().fromJson(json, new TypeToken<List<T>>() {
+        return gson.fromJson(json, new TypeToken<List<T>>() {
         }.getType());
     }
 }

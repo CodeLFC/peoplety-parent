@@ -10,7 +10,7 @@ import gaozhi.online.base.result.Result;
  * @date 2022/1/19 22:36
  */
 public enum UserExceptionEnum implements Result.ResultEnum {
-    USER_AUTH_ERROR(2000,"API请求权限校验失败:请重新登陆，您的账号有被盗用的风险，请及时修改密码"),
+    USER_AUTH_ERROR(2000,"抱歉，您没有对应权限"),
     USER_PASS_ERROR(2001,"密码错误"),
     USER_ACCOUNT_FORBIDDEN(2002,"账号已被禁用"),
     USER_ACCOUNT_CANCEL(2003,"账号已注销"),
