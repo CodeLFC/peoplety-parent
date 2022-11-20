@@ -23,7 +23,9 @@ public enum UserExceptionEnum implements Result.ResultEnum {
     VERIFY_CODE_EMAIL_ERROR(2010,"接收验证码的邮箱地址不正确"),
     USER_STATUS_ERROR(2011,"用户身份无效"),
     USER_CANT_RECOMMEND_SELF(2012,"用户不应该推荐自己"),
-    EMAIL_SEND_FAIL(2013,"服务器忙，邮件发送被拒绝，请使用短信方式或稍后再试");
+    EMAIL_SEND_FAIL(2013,"服务器忙，邮件发送被拒绝，请使用短信方式或稍后再试"),
+    ROLE_NOT_EXIST(2014,"角色不存在"),
+    ROLE_HAS_EXIST(2015,"角色已存在"),;
     private final int  code;
     private final String message;
 
