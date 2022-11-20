@@ -16,6 +16,7 @@ public class IPInfoBeanCopyFactory {
         @Override
         public IPInfoDTO copy(IPInfo obj, Class<IPInfoDTO> klass) {
             IPInfoDTO ipInfoDTO = BeanCopyFactory.super.copy(obj, klass);
+            ipInfoDTO.setRet("ok");
             ipInfoDTO.setData(StringUtil.json2List(obj.getData()));
             return ipInfoDTO;
         }

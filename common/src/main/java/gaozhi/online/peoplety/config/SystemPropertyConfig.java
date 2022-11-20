@@ -1,7 +1,7 @@
 package gaozhi.online.peoplety.config;
 
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Value; 
 import org.springframework.stereotype.Component;
 
 /**
