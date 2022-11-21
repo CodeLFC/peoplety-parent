@@ -1,8 +1,8 @@
 package gaozhi.online.peoplety.feign;
 
-import gaozhi.online.base.log.SysLog;
 import gaozhi.online.base.result.Result;
 import gaozhi.online.peoplety.config.FeignConfiguration;
+import gaozhi.online.peoplety.entity.SysLog;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
