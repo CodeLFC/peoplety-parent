@@ -20,7 +20,4 @@ public interface UserFeignClient {
 
     @PostMapping("/general/user/post/check_auth")
     Result checkAuth(@RequestHeader(HeaderChecker.accessToken) String token, @RequestHeader(HeaderChecker.rpcURLKey) String url, @RequestHeader(HeaderChecker.rpcClientIp) String ip);
-
-    @PostMapping("/general/user/post/message")
-    Result postMessage(@RequestHeader(HeaderChecker.accessToken) String token, @RequestHeader(HeaderChecker.rpcURLKey) String url, @RequestHeader(HeaderChecker.rpcClientIp) String ip, @RequestBody Message message);
 }
