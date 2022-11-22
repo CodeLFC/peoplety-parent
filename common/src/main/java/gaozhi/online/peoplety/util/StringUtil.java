@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author gaozhi.online
@@ -78,5 +79,11 @@ public class StringUtil {
     public static <T> List<T> json2List(String json) {
         return gson.fromJson(json, new TypeToken<List<T>>() {
         }.getType());
+    }
+    public static <T> String set2Json(Set<T> set){
+        return gson.toJson(set);
+    }
+    public static <T>Set<T>json2Set(String json){
+        return gson.fromJson(json,new TypeToken<Set<T>>(){}.getType());
     }
 }
