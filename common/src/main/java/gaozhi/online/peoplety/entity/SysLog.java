@@ -16,7 +16,7 @@ public class SysLog {
     @TableId(type=IdType.AUTO)
     private long id;
     private String url;
-    private String userid;
+    private long userid;
     private String ip;
     private long time;
 }
