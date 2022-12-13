@@ -17,6 +17,7 @@ import lombok.Data;
 public class Meeting {
     @TableId(type = IdType.AUTO)
     private Long id;
+    private Long userid;
     @TableField("head_url")
     private String headUrl;
     private String name;
