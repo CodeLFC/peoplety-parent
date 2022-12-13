@@ -16,12 +16,12 @@ import lombok.Data;
 @Data
 public class Role {
     @TableId(type = IdType.AUTO)
-    private int id;
-    private int grade;
+    private Integer id;
+    private Integer grade;
     private String name;
     private String privileges;
     private String description;
     @TableField("create_time")
-    private long createTime;
-    private boolean enable;
+    private Long createTime;
+    private Boolean enable;
 }

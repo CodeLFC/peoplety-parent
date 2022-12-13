@@ -14,9 +14,9 @@ import lombok.Data;
 @TableName("sys_log")
 public class SysLog {
     @TableId(type=IdType.AUTO)
-    private long id;
+    private Long id;
     private String url;
-    private long userid;
+    private Long userid;
     private String ip;
-    private long time;
+    private Long time;
 }
