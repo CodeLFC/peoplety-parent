@@ -21,4 +21,6 @@ public class Meeting {
     private String headUrl;
     private String name;
     private Long time;
+    @TableField("ban_time")
+    private Long banTime;
 }
