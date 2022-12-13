@@ -17,5 +17,5 @@ import org.springframework.web.bind.annotation.RequestHeader;
 public interface UserFeignClient {
 
     @PostMapping("/general/user/post/check_auth")
-    Result checkAuth(@RequestHeader(HeaderChecker.accessToken) String token, @RequestHeader(HeaderChecker.rpcURLKey) String url, @RequestHeader(HeaderChecker.rpcClientIp) String ip);
+    Result checkAuth(@RequestHeader(HeaderChecker.accessToken) String token, @RequestHeader(HeaderChecker.rpcURLKey) String url, @RequestHeader(HeaderChecker.rpcClientIp) String ip,@RequestHeader(HeaderChecker.rpcPrivilege) String isPrivilege);
 }
